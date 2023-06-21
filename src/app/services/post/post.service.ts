@@ -22,7 +22,8 @@ export class PostService {
       .pipe(
         tap((posts: Post[]) => {
           this.postsSubject.next(posts);
-        }));
+        }))
+        .subscribe();
   }
 
   getPost(id: string): Observable<Post> {
@@ -31,11 +32,11 @@ export class PostService {
 
   createPost(command: CreatePostCommand): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, command)
-    .pipe(
-      catchError((error: Error)=>{
-        this.error.next(error);
-        return throwError(() => error);
-      })
-    );
+      .pipe(
+        catchError((error: Error) => {
+          this.error.next(error);
+          return throwError(() => error);
+        })
+      );
   }
 }

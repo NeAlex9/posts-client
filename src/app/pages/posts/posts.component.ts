@@ -9,15 +9,7 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  posts: Post[] = [
-    {
-      id: "sfd",
-      title: "fdg",
-      authorName: "John Doe",
-      score: 23,
-      createdAt: new Date()
-    }
-  ];
+  posts: Post[] = [];
   error?: Error;
   isCreateFormOpen: boolean = false;
   errorTimeout: Subscription | undefined;

@@ -1,3 +1,10 @@
 <div class="m-5">
-    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    <div class="m-auto d-block w-75 bg-white ">
+        <div class="material-icons d-flex align-items-center p-3">
+            add
+        </div>
+    </div>
+    <div class="m-auto d-block w-75">
+        <app-post *ngFor="let post of posts" [post]="post" class="m-3"></app-post>
+    </div>
 </div>

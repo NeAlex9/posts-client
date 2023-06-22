@@ -8,3 +8,8 @@
     left: 50%;
     transform: translate(-50%, 50%);
 }
+
+.flex-even {
+    flex: 1 1 0px;
+    width: 0;
+  }

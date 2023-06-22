@@ -2,15 +2,22 @@
 </div>
 
 <div class="form-group">
-    <div class="modal-dialog position-fixed bg-white w-50 create-form-position">
-        <div class="modal-content d-flex justify-content-center w-75 m-auto p-5">
-            <div class="d-flex flex-column">
+    <div class="container-lg modal-dialog position-fixed bg-white create-form-position">
+        <div class="modal-content d-flex justify-content-center m-auto p-5">
+            <div class="d-flex flex-column container-xl">
                 <input [(ngModel)]="createPostCommand.title" />
-                <div class="d-flex justify-content-evenly mt-4">
-                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2"
-                        (click)="createPost()">Create</button>
-                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2"
-                        (click)="closePostCreationForm()">Close</button>
+
+                <div class="m-3">
+                    <div class="row gx-1">
+                        
+                            <button type="button" class="col-5 btn btn-warning pe-5 ps-5 pt-2 pb-2"
+                                (click)="createPost()">Create</button>
+                       
+                            <button type="button"
+                                class="col-5 btn btn-warning pe-5 ps-5 pt-2 pb-2"
+                                (click)="closePostCreationForm()">Close</button>
+                      
+                    </div>
                 </div>
             </div>
         </div>

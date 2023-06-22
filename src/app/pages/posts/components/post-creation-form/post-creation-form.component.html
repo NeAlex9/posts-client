@@ -1,1 +1,18 @@
-<p>post-creation-form works!</p>
+<div class="position-fixed top-0 bottom-0 right-0 w-100 h-100 create-outter-form-bg">
+</div>
+
+<div class="form-group">
+    <div class="modal-dialog position-fixed bg-white w-50 create-form-position">
+        <div class="modal-content d-flex justify-content-center w-75 m-auto p-5">
+            <div class="d-flex flex-column">
+                <input [(ngModel)]="createPostCommand.title" />
+                <div class="d-flex justify-content-evenly mt-4">
+                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2"
+                        (click)="createPost()">Create</button>
+                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2"
+                        (click)="closePostCreationForm()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

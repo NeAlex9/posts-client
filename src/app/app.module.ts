@@ -8,6 +8,10 @@ import { PostCreationFormComponent } from './pages/posts/components/post-creatio
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,10 +25,14 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    FormsModule
   ],
   providers: [
-  
+    MatIconRegistry
   ],
   bootstrap: [AppComponent]
 })

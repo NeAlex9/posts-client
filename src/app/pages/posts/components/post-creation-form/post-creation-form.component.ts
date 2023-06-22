@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CreatePostCommand } from 'src/app/services/post/models/create-post.model';
 import { PostService } from 'src/app/services/post/post.service';
 
@@ -9,12 +9,19 @@ import { PostService } from 'src/app/services/post/post.service';
 })
 export class PostCreationFormComponent {
 
+  @Output() close: EventEmitter<any> = new EventEmitter();
+  createPostCommand: CreatePostCommand = {
+    title: '',
+    score: 0,
+    createdAt: new Date(),
+  };
+
   constructor(
     private postService: PostService
   ) { }
 
-  createPost(command: CreatePostCommand) {
-    this.postService.createPost(command)
+  createPost() {
+    this.postService.createPost(this.createPostCommand)
       .subscribe({
         next: () => {
           this.postService.pullPosts();
@@ -23,5 +30,9 @@ export class PostCreationFormComponent {
           console.log(error);
         }
       });
+  }
+
+  closePostCreationForm(){
+    this.close.emit();
   }
 }

@@ -13,6 +13,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule }   from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     MatIconRegistry

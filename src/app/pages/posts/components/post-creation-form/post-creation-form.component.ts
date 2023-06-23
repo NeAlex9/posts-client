@@ -10,6 +10,8 @@ import { PostService } from 'src/app/services/post/post.service';
 export class PostCreationFormComponent {
 
   @Output() close: EventEmitter<any> = new EventEmitter();
+  
+  isLoading: boolean = false;
   createPostCommand: CreatePostCommand = {
     title: '',
     score: 0,
@@ -21,6 +23,7 @@ export class PostCreationFormComponent {
   ) { }
 
   createPost() {
+    this.isLoading = true;
     this.postService.createPost(this.createPostCommand)
       .subscribe({
         next: () => {
@@ -28,11 +31,15 @@ export class PostCreationFormComponent {
         },
         error: (error) => {
           console.log(error);
+          this.postService.error.next(error);
+        },
+        complete: () => {
+          this.isLoading = false;
         }
       });
   }
 
-  closePostCreationForm(){
+  closePostCreationForm() {
     this.close.emit();
   }
 }

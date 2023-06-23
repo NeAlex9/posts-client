@@ -1,7 +1,7 @@
 <div class="position-fixed top-0 bottom-0 right-0 w-100 h-100 create-outter-form-bg">
 </div>
 
-<div class="create-form-position row justify-content-center w-100 g-0">
+<div [hidden]="isLoading" class="create-form-position row justify-content-center w-100 g-0">
     <div class="col-lg-6 col-md-8 col-sm-10 bg-white">
         <div class="d-flex flex-column m-3 justify-content-center m-auto p-5">
 
@@ -15,10 +15,10 @@
                 </span>
             </div>
 
-            <div class="row justify-content-center g-2">
+            <div class="row justify-content-evenly g-2">
 
                 <div class="col-auto">
-                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2"
+                    <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2" 
                         (click)="createPost()">Create</button>
                 </div>
 
@@ -27,8 +27,12 @@
                         (click)="closePostCreationForm()">Close</button>
                 </div>
 
-
             </div>
         </div>
     </div>
 </div>
+
+
+<mat-spinner *ngIf="isLoading" class="position-absolute" style=" top: 40%; left: 50%; transform: translate(-50%, 50%);" [diameter]="70">
+
+</mat-spinner>

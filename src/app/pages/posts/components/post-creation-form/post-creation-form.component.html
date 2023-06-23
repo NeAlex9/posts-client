@@ -19,7 +19,7 @@
 
                 <div class="col-auto">
                     <button type="button" class="btn btn-warning pe-5 ps-5 pt-2 pb-2" 
-                        (click)="createPost()">Create</button>
+                        (click)="createPost()" [disabled]="title.invalid || title.pristine">Create</button>
                 </div>
 
                 <div class="col-auto">

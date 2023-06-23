@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule }   from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule }   from '@angular/forms';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   providers: [
     MatIconRegistry

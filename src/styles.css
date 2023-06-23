@@ -5,3 +5,14 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.alert-result {
+    color: white;
+    --mdc-snackbar-container-color: #33a8ff !important;
+}
+
+.error-result {
+    color: white;
+    --mdc-snackbar-container-color: rgb(247, 130, 130) !important;
+}

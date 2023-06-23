@@ -5,6 +5,10 @@
     <div class="col-lg-6 col-md-8 col-sm-10 bg-white">
         <div class="d-flex flex-column m-3 justify-content-center m-auto p-5">
 
+            <div class="h3 mb-4">
+                Create new post
+            </div>
+
             <div class="p-2 d-flex flex-column justify-content-center mb-3">
                 <mat-form-field appearance="outline">
                     <input placeholder="Title" [(ngModel)]="createPostCommand.title" name="title" matInput required
@@ -32,7 +36,5 @@
     </div>
 </div>
 
-
-<mat-spinner *ngIf="isLoading" class="position-absolute" style=" top: 40%; left: 50%; transform: translate(-50%, 50%);" [diameter]="70">
-
+<mat-spinner *ngIf="isLoading" class="spinner" [diameter]="70">
 </mat-spinner>

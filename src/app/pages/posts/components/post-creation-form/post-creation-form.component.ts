@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CreatePostCommand } from 'src/app/services/post/models/create-post.model';
 import { PostService } from 'src/app/services/post/post.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-post-creation-form',
@@ -10,7 +11,7 @@ import { PostService } from 'src/app/services/post/post.service';
 export class PostCreationFormComponent {
 
   @Output() close: EventEmitter<any> = new EventEmitter();
-  
+
   isLoading: boolean = false;
   createPostCommand: CreatePostCommand = {
     title: '',
@@ -19,7 +20,8 @@ export class PostCreationFormComponent {
   };
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private snackbarService: SnackbarService
   ) { }
 
   createPost() {
@@ -28,14 +30,15 @@ export class PostCreationFormComponent {
       .subscribe({
         next: () => {
           this.postService.pullPosts();
+          this.snackbarService.openSuccessSnackBar('Post has create successfuly');
         },
         error: (error) => {
           console.log(error);
-          this.postService.error.next(error);
-        },
-        complete: () => {
-          this.isLoading = false;
+          this.snackbarService.openFailureSnackBar('Failed to create post');
         }
+      }).add(() => {
+        this.isLoading = false;
+        this.closePostCreationForm();
       });
   }
 

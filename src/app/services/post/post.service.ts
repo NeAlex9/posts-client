@@ -9,6 +9,8 @@ import { Subject, catchError, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
+
+  private limit: number = 15;
   private baseUrl: string = "https://localhost:7107/api/posts";
   postsSubject: Subject<Post[]> = new Subject<Post[]>();
   error: Subject<Error> = new Subject<Error>();
@@ -18,7 +20,7 @@ export class PostService {
   ) { }
 
   pullPosts(): void {
-    this.http.get<Post[]>(`${this.baseUrl}`)
+    this.http.get<Post[]>(`${this.baseUrl}?limit=${this.limit}`)
       .pipe(
         tap((posts: Post[]) => {
           this.postsSubject.next(posts);

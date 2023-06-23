@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription, take, timer } from 'rxjs';
 import { Post } from 'src/app/services/post/models/post.model';
 import { PostService } from 'src/app/services/post/post.service';
 
@@ -9,10 +8,9 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+
   posts: Post[] = [];
-  error?: Error;
   isCreateFormOpen: boolean = false;
-  errorTimeout: Subscription | undefined;
 
   constructor(
     private postService: PostService
@@ -24,11 +22,6 @@ export class PostsComponent implements OnInit {
       .subscribe(posts => {
         this.posts = posts;
       });
-    this.postService.error
-      .subscribe((error: Error) => {
-        this.error = error;
-        this.startErrorTimeout();
-      });
   }
 
   openPostCreationForm(): void {
@@ -37,14 +30,5 @@ export class PostsComponent implements OnInit {
 
   closePostCreationForm(): void {
     this.isCreateFormOpen = false;
-  }
-
-  startErrorTimeout(): void {
-    this.errorTimeout?.unsubscribe();
-    this.errorTimeout = timer(5000)
-      .pipe(
-        take(1)).subscribe(() => {
-          this.error = undefined;
-        });
   }
 }

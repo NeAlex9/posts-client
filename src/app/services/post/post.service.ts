@@ -19,13 +19,12 @@ export class PostService {
     private http: HttpClient,
   ) { }
 
-  pullPosts(): void {
-    this.http.get<Post[]>(`${this.baseUrl}?limit=${this.limit}`)
+  pullPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}?limit=${this.limit}`)
       .pipe(
         tap((posts: Post[]) => {
           this.postsSubject.next(posts);
-        }))
-        .subscribe();
+        }));
   }
 
   getPost(id: string): Observable<Post> {

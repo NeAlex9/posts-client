@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-md-8 col-sm-10 bg-white">
         <div class="d-flex flex-column m-3 justify-content-center m-auto p-5">
 
-            <div class="h3 mb-4">
+            <div class="h3 mb-4 text-break">
                 Create new post
             </div>
 
@@ -14,7 +14,7 @@
                     <input placeholder="Title" [(ngModel)]="createPostCommand.title" name="title" matInput required
                         minlength="1" maxlength="50" #title="ngModel">
                 </mat-form-field>
-                <span class="text-danger" [hidden]="!(title.invalid && (title.dirty || title.touched))">
+                <span class="text-danger text-break" [hidden]="!(title.invalid && (title.dirty || title.touched))">
                     Title is required and should be between 1 and 50 characters.
                 </span>
             </div>

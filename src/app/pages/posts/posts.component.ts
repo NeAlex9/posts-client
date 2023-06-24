@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post/models/post.model';
 import { PostService } from 'src/app/services/post/post.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-posts',
@@ -14,11 +15,20 @@ export class PostsComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private snackbarService: SnackbarService
   ) { }
 
   ngOnInit(): void {
-    this.postService.pullPosts();
+    this.postService.pullPosts()
+      .subscribe({
+        error: (error) => {
+          console.log(error);
+          this.isLoading = false;
+          this.snackbarService.openFailureSnackBar('Failed to retrieve posts');
+        }
+      });
+
     this.postService.postsSubject
       .subscribe(posts => {
         this.posts = posts;

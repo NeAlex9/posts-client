@@ -29,7 +29,8 @@ export class PostCreationFormComponent {
     this.postService.createPost(this.createPostCommand)
       .subscribe({
         next: () => {
-          this.postService.pullPosts();
+          this.postService.pullPosts()
+            .subscribe();
           this.snackbarService.openSuccessSnackBar('Post created successfuly');
         },
         error: (error) => {

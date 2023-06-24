@@ -1,3 +1,6 @@
+.post-height-min {
+    min-height: 73vh;
+}
 
 .spinner {
     position: absolute;

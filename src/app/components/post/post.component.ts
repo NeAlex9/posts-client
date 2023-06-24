@@ -7,6 +7,5 @@ import { Post } from 'src/app/services/post/models/post.model';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  @Input() post?: Post;
-
+  @Input() post: Post;
 }

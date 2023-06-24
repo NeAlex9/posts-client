@@ -30,7 +30,7 @@ export class PostCreationFormComponent {
       .subscribe({
         next: () => {
           this.postService.pullPosts();
-          this.snackbarService.openSuccessSnackBar('Post has create successfuly');
+          this.snackbarService.openSuccessSnackBar('Post created successfuly');
         },
         error: (error) => {
           console.log(error);

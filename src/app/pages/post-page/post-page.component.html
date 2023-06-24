@@ -1,0 +1,27 @@
+<div class="m-5 min-vh-100">
+
+    <div class="m-auto d-block w-75 bg-white mb-4">
+        <div class="p-3 d-flex align-middle">
+            <button mat-icon-button color="basic" (click)="navigateBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <span class="d-flex align-items-center ms-2">Return to posts</span>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoading">
+        <div *ngIf="post;else notFound" class="m-auto d-block w-75">
+            <app-post [post]="post"></app-post>
+        </div>
+
+        <ng-template #notFound>
+            <div class="h1 d-flex justify-content-center align-items-center text-center">
+                Post not found :(
+            </div>
+        </ng-template>
+    </div>
+
+</div>
+
+<mat-spinner *ngIf="isLoading" class="spinner" [diameter]="70">
+</mat-spinner>

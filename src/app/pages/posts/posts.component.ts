@@ -11,6 +11,7 @@ export class PostsComponent implements OnInit {
 
   posts: Post[] = [];
   isCreateFormOpen: boolean = false;
+  isLoading: boolean = true;
 
   constructor(
     private postService: PostService
@@ -21,6 +22,7 @@ export class PostsComponent implements OnInit {
     this.postService.postsSubject
       .subscribe(posts => {
         this.posts = posts;
+        this.isLoading = false;
       });
   }
 

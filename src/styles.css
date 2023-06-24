@@ -6,6 +6,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
 
 .alert-result {
     color: white;
@@ -16,3 +21,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: white;
     --mdc-snackbar-container-color: rgb(247, 130, 130) !important;
 }
+

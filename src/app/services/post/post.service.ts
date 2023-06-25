@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post } from './models/post.model';
 import { CreatePostCommand } from './models/create-post.model';
 import { Subject, catchError, tap, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ import { Subject, catchError, tap, throwError } from 'rxjs';
 export class PostService {
 
   private limit: number = 15;
-  private baseUrl: string = "https://localhost:7107/api/posts";
   postsSubject: Subject<Post[]> = new Subject<Post[]>();
   error: Subject<Error> = new Subject<Error>();
 
@@ -20,7 +20,7 @@ export class PostService {
   ) { }
 
   pullPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}?limit=${this.limit}`)
+    return this.http.get<Post[]>(`${environment.apiUrl}/posts?limit=${this.limit}`)
       .pipe(
         tap((posts: Post[]) => {
           this.postsSubject.next(posts);
@@ -28,11 +28,11 @@ export class PostService {
   }
 
   getPost(id: string): Observable<Post> {
-    return this.http.get<Post>(`${this.baseUrl}/${id}`);
+    return this.http.get<Post>(`${environment.apiUrl}/posts/${id}`);
   }
 
   createPost(command: CreatePostCommand): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}`, command)
+    return this.http.post<any>(`${environment.apiUrl}/posts`, command)
       .pipe(
         catchError((error: Error) => {
           this.error.next(error);
